@@ -66,7 +66,7 @@ The project is developed in a **local enviornment (MacOS)** and based on librari
 
 ## Overview of the steps
 
-1. On **AWS console **, create **IAM user**
+1. On **AWS console**, create **IAM user**
     * save the access key and secrete in `dl.cfg`
 2. On **AWS console**, create a **S3 bucket**
     * The name of my S3 bucket is `aws-emr-resources-327442518701-us-west-2`
@@ -80,7 +80,7 @@ The project is developed in a **local enviornment (MacOS)** and based on librari
 
 ## Files
 
-* `etl.py`: pipeline for data stored on S3 `s3://udacity-dend/`
+* `etl_local.py`: pipeline for data stored on S3 `s3://udacity-dend/`
 * `etl.py`: pipeline for test data downloaded from project workspace and stored locally on `/Users/hetianlin/OneDrive/GitHub/data_lakes_with_Spark/data/`
 * `sample_dl.cfg` is a copy of `dl.cfg` without  **key and secret**, becuase they ought NOT to be accessible to the public
 
