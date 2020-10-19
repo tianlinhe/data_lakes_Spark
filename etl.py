@@ -40,7 +40,7 @@ def process_song_data(spark, input_data, output_data):
     # remove duplicated rows
     # remove song_id ==null
     songs_table = df.select(['song_id','title','artist_id','year','duration'])\
-                    .drop_duplicates().dropna(subset='song_id')
+                    .drop_duplicates(subset='song_id').dropna(subset='song_id')
     print ('songs_table:',songs_table.count(),'rows')
     songs_table.show(1)
    
@@ -56,7 +56,7 @@ def process_song_data(spark, input_data, output_data):
     # remove duplicated rows
     # remove artist_id ==null""" 
     artists_table = df.select(['artist_id', 'artist_name', 'artist_location', 'artist_latitude', 'artist_longitude'])\
-                    .drop_duplicates().dropna(subset='artist_id')
+                    .drop_duplicates(subset='artist_id').dropna(subset='artist_id')
     print ('artists_table:',artists_table.count(),'rows')
     artists_table.show(1)
     
@@ -85,7 +85,7 @@ def process_log_data(spark, input_data, output_data):
 
     # extract columns for users table    
     users_table = df.select(['userID', 'firstName', 'lastName', 'gender', 'level'])\
-                .drop_duplicates().dropna(subset='userID')
+                .drop_duplicates(subset='userID').dropna(subset='userID')
     
     # write users table to parquet files
     users_table.write\
@@ -118,7 +118,7 @@ def process_log_data(spark, input_data, output_data):
                             month('start_time').alias('month'),
                             year('start_time').alias('year'),
                             date_format('start_time','EEEE').alias('weekday'))\
-                    .dropna(subset='start_time')
+                    .drop_duplicates(subset='start_time').dropna(subset='start_time')
 
    
     # write time table to parquet files partitioned by year and month
